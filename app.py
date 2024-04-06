@@ -6,7 +6,7 @@ import smtplib
 
 load_dotenv('.env')
 
-def send_mail(text : str='Email Body', subject: str='Messsage From Solomon', from_email:str =f'Solomon Azowenu<{os.getenv('username')}>', to_emails:list =None) -> None:
+def send_mail(subject: str='Messsage From Solomon', text: str='Email Body', html: str='<h1>Hello World</h1>', from_email:str =f'Solomon Azowenu<{os.getenv('username')}>', to_emails:list =None) -> None:
     assert isinstance(to_emails, list)
 
     msg: object = MIMEMultipart('alternative')
@@ -17,15 +17,16 @@ def send_mail(text : str='Email Body', subject: str='Messsage From Solomon', fro
     txt_part = MIMEText(text, 'plain')
     msg.attach(txt_part)
 
-    html_part = MIMEText('<h1>This is working </h1>', 'html')
-    msg.attach(html_part)
+    if html:
+        html_part = MIMEText(html, 'html')
+        msg.attach(html_part)
 
     msg_str = msg.as_string()
 
     with smtplib.SMTP(host=host, port=port, timeout=120) as server:
         server.ehlo()
         server.starttls()
-        server.login("YOUR USERNAME", "YOUR PASSWORD")
+        server.login('kingsolodawarrior@gmail.com', 'jwax jsbz pzoa wtni')
         server.sendmail(from_email, to_emails, msg_str)
 
 
