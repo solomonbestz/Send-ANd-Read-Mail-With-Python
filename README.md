@@ -38,7 +38,7 @@ A python script to send mail to List of users using smtp library
     ```
 
 ### Run App
-
+1. Run with python command
     ```bash 
     python app.py
     ```
