@@ -26,7 +26,7 @@ def send_mail(subject: str='Messsage From Solomon', text: str='Email Body', html
     with smtplib.SMTP(host=host, port=port, timeout=120) as server:
         server.ehlo()
         server.starttls()
-        server.login('kingsolodawarrior@gmail.com', 'jwax jsbz pzoa wtni')
+        server.login('USERNAME', 'PASSWORD')
         server.sendmail(from_email, to_emails, msg_str)
 
 
